@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: dawarich
+    env: ruby
+    plan: free
+    buildCommand: "bundle install && yarn install && bundle exec rails db:migrate"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        value: "postgresql://dawarich_sql_user:RD7fUxJQ358kvNLkXhfFVH242xSC8D3a@dpg-cq1eooo8fa8c739sbj3g-a/dawarich_sql"
+      - key: REDIS_URL
+        value: "redis://red-cq1ep6d6l47c73amjb50:6379"
+      - key: RAILS_ENV
+        value: "development"
+      - key: APPLICATION_HOST
+        value: "localhost"
+      - key: TIME_ZONE
+        value: "America/Chicago"
